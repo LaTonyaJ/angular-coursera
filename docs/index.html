@@ -1,55 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Shopping List Check Off</title>
+    <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-      .emptyMessage {
-        font-weight: bold;
-        color: red;
-        font-size: 1.2em;
-      }
-      li {
-        margin-bottom: 7px;
-        font-size: 1.2em;
-      }
-      li > button {
-        margin-left: 6px;
-      }
-      button > span {
-        color: green;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css">
   </head>
-<body ng-app="ShoppingListCheckOff">
-  <div class="container">
-  <h1>Shopping List Check Off</h1>
+<body ng-app="NarrowItDownApp">
+  <div class="container" ng-controller="NarrowItDownControllerApp as nida">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-  <div class="row">
-
-    <!-- To Buy List -->
-    <div class="col-md-6" ng-controller='ToBuyController as toBuy'>
-     <h2>To Buy:</h2>
-     <ul >
-      <li ng-repeat="item in toBuy.items">Buy {{item.quantity}} {{item.name}} <button ng-click="toBuy.buy($index)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <!-- <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li> -->
-     </ul>
-     <div class="emptyMessage" ng-if="toBuy.items.length == 0">Everything is bought!</div>
+    <div class="form-group">
+      <input type="text" placeholder="search term" class="form-control" ng-model="search">
     </div>
-
-    <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller="AlreadyBoughtController as alreadyBought">
-     <h2>Already Bought:</h2>
-     <ul>
-       <li ng-repeat="item in alreadyBought.items">Bought {{item.quantity}} {{item.name}}</li>
-     </ul>
-     <div class="emptyMessage" ng-if="alreadyBought.items.length == 0">Nothing bought yet.</div>
+    <div class="form-group narrow-button">
+      <button class="btn btn-primary" ng-click="nida.searchMenu()">Narrow It Down For Me!</button>
+    </div>
+    <div class="form-group">
+      <found-items items-found="nida.found" on-remove="nida.remove(index)"></found-items>
+      <h3 class="nf" ng-if="nida.found.length == 0">Nothing Found!</h3>
     </div>
   </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.js" integrity="sha512-klc+qN5PPscoGxSzFpetVsCr9sryi2e2vHwZKq43FdFyhSAa7vAqog/Ifl8tzg/8mBZiG2MAKhyjH5oPJp65EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="script.js"></script>
 </body>
 </html>

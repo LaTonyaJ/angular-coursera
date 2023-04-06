@@ -1,0 +1,8 @@
+<div class="list" ng-repeat="item in itemsFound">
+    <h6><b>({{item.short_name}})</b></h6>
+    <p>{{item.name}}</p>
+    <p>{{item.desc}}</p>  
+    <button class="btn btn-danger btn-sm" ng-click="onRemove({index: $index})">Don't want this!</button>
+    <hr>
+
+</div>
