@@ -1,0 +1,14 @@
+.category:hover {
+    border: 1px dotted blue;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category {
+    width: 30%;
+}
+
+li.items {
+    margin-bottom: 5px;
+}
