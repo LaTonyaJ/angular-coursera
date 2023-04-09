@@ -20,7 +20,7 @@
 
         .state('categories', {
             url: '/categories',
-            templateUrl: '/templates/categories.template.html',
+            templateUrl: 'templates/categories.template.html',
             controller: 'categoriesController as cat',
             resolve: {
                 items: ['MenuDataService', (MenuDataService) => {
@@ -31,7 +31,7 @@
 
         .state('items', {
             url: '/items/{short_name}',
-            templateUrl: '/templates/items.template.html',
+            templateUrl: 'templates/items.template.html',
             controller: 'itemsController as itemsCtrl',
             resolve: {
                 item: ['MenuDataService', 
